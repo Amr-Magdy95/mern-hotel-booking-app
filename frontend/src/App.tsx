@@ -1,5 +1,6 @@
 import Layout from "./layouts/Layout"
-import { Route, Routes } from "react-router-dom"
+import Register from "./pages/Register"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 const App = () => {
   return (
@@ -7,6 +8,14 @@ const App = () => {
       <Route path="/" element={<Layout>
         <p>HomePage</p>
       </Layout>} />
+
+      <Route path="/register" element={
+        <Layout>
+          <Register />
+        </Layout>
+      } />
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }
