@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { AppContextProvider } from './context/appContext.tsx'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -15,13 +16,16 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
+      <AppContextProvider>
 
-          <Route path='/*' element={<App />} />
+        <BrowserRouter>
+          <Routes>
 
-        </Routes>
-      </BrowserRouter>
+            <Route path='/*' element={<App />} />
+
+          </Routes>
+        </BrowserRouter>
+      </AppContextProvider>
     </QueryClientProvider>
   </React.StrictMode>,
 )
